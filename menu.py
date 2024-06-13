@@ -1,5 +1,7 @@
 import variables
-
+import strings
+import condicionales
+import diccionarios
 
 #Imprimir menu opciones
 def mostrar_menu(opciones):
@@ -34,10 +36,10 @@ def menu_principal():
   print('')
   print('Ejercicios Del Curso de Fundamentos de Python')
   opciones = { 
-      '1': ('Ejercicios de variables', accion1),
-      '2': ('Opción 2', accion2),
-      '3': ('Opción 3', accion3),
-      '4': ('Opción 4', accion4),
+      '1': ('Ejercicios de Variables', accion1),
+      '2': ('Ejercicios de Strings', accion2),
+      '3': ('Ejercicios de Condicionales', accion3),
+      '4': ('Ejercicios de Diccionarios', accion4),
       '5': ('Opción 5', accion5),
       '6': ('Opción 6', accion6),
       '7': ('Opción 7', accion7),
@@ -52,13 +54,13 @@ def accion1():
   variables.menu_principal()
 
 def accion2():
-  print('Has elegido la opción 2')
+  strings.menu_principal()
 
 def accion3():
-  print('Has elegido la opción 3')
+  condicionales.menu_principal()
 
 def accion4():
-  print('Has elegido la opción 4')
+  diccionarios.menu_principal()
 
 def accion5():
   print('Has elegido la opción 5')
