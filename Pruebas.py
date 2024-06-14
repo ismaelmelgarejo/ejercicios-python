@@ -62,3 +62,46 @@ print(persona['nombre'], 'tiene', persona['edad'], 'años, vive en', persona['di
 esperar_tecla()
 from os import system
 system("clear")
+
+#3
+print("")
+print("------------------")
+print("|Precio de frutas|")
+print("------------------")
+print("")
+print("Escribir un programa que guarde en un diccionario los precios de las frutas de la tabla,")
+print("pregunte al usuario por una fruta, un número de kilos y muestre por pantalla el precio")
+print("de ese número de kilos de fruta. Si la fruta no está en el diccionario debe mostrar un")
+print("mensaje informando de ello.")
+print("")
+print(" --------------------")
+print(" |**Fruta**|*Precio*|")
+print(" --------------------")
+print(" | Plátano |  1.35  |")
+print(" --------------------")
+print(" | Manzana |  0.80  |")
+print(" --------------------")
+print(" |  Pera   |  0.85  |")
+print(" --------------------")
+print(" | Naranja |  0.70  |")
+print(" --------------------")
+print("")
+fruta = {
+  'Platano': 1.35,
+  'Manzana': 0.80,
+  'Pera': 0.85,
+  'Naranja': 0.70
+}
+print("")
+ingresar_fruta = input("Que fruta desea? ").title()
+print("")
+ingresar_peso = float(input("Que cantidad necesita? en KG "))
+print("")
+if ingresar_fruta in fruta:
+    print("Usted compro ",ingresar_peso,"KG de ",ingresar_fruta,"por ", fruta[ingresar_fruta] * ingresar_peso)
+else:
+    print("La fruta no está.")
+
+esperar_tecla()
+from os import system
+system("clear")
