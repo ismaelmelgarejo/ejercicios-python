@@ -12,31 +12,24 @@ def esperar_tecla():
   finally:
       termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 
-#4
+#5
 print("")
-print("------------------")
-print("|Precio de frutas|")
-print("------------------")
+print("-----------------------------")
+print("|créditos de las asignaturas|")
+print("-----------------------------")
 print("")
-print("Escribir un programa que pregunte una fecha en formato dd/mm/aaaa y muestre por")
-print("pantalla la misma fecha en formato dd de <mes> de aaaa donde <mes> es el nombre")
-print("del mes.")
+print("Escribir un programa que almacene el diccionario con los créditos de las asignaturas")
+print("de un curso {'Matemáticas': 6, 'Física': 4, 'Química': 5} y después mues-")
+print("tre por pantalla los créditos de cada asignatura en el formato <asignatura> tiene")
+print("<créditos> créditos, donde <asignatura> es cada una de las asignaturas del")
+print("curso, y <créditos> son sus créditos. Al final debe mostrar también el número total de")
+print("créditos del curso.")
 print("")
-fruta = {
-  'enero': 1,
-  'febrero': 2,
-  'marzo': 3,
-  'abril': 4,
-   'mayo': 5,
-  'junio': 6,
-   'julio': 7,
-  'agosto': 8,
-   'septiembre': 9,
-  'octubre': 10,
-   'Noviembre': 11,
-  'diciembre': 12
-}
-
+creditos = {
+   'Matemáticas': 6,
+   'Física': 4,
+   'Química': 5
+  }
 
 esperar_tecla()
 from os import system

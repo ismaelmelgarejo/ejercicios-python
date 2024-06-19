@@ -101,7 +101,41 @@ if ingresar_fruta in fruta:
     print("Usted compro ",ingresar_peso,"KG de ",ingresar_fruta,"por ", fruta[ingresar_fruta] * ingresar_peso)
 else:
     print("La fruta no está.")
+esperar_tecla()
+from os import system
+system("clear")
 
+#4
+print("")
+print("--------")
+print("|Fechas|")
+print("--------")
+print("")
+print("Escribir un programa que pregunte una fecha en formato dd/mm/aaaa y muestre por")
+print("pantalla la misma fecha en formato dd de <mes> de aaaa donde <mes> es el nombre")
+print("del mes.")
+print("")
+entrada = input("Ingrese la fecha en formato dd/m/aaaa separados por /: ")
+print("")
+dia, mes, anho = entrada.split('/')# Dividir la entrada en las variables correspondientes
+mes = int(mes.strip())
+meses = {
+  1: 'enero',
+  2: 'febrero',
+  3: 'marzo',
+  4: 'abril',
+  5: 'mayo',
+  6: 'junio',
+  7: 'julio',
+  8: 'agosto',
+  9: 'agosto',
+  10: 'octubre',
+  11: 'Noviembre',
+  12: 'diciembre'
+}
+if mes in meses:
+    print(dia,"/",meses[mes],"/", anho)
+print("")
 esperar_tecla()
 from os import system
 system("clear")

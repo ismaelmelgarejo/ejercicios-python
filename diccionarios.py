@@ -2,83 +2,117 @@ import menu
 import sys
 import tty
 import termios
-
-
-#Pausar ejecucuion
-def esperar_tecla():
-  print('Presione cualquier tecla para continuar...')
-  fd = sys.stdin.fileno()
-  old_settings = termios.tcgetattr(fd)
-  try:
-      tty.setraw(sys.stdin.fileno())
-      sys.stdin.read(1)
-  finally:
-      termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-
-#Imprimir menu opciones
-def mostrar_menu(opciones):
-  print('Seleccione una opción:')
-  for clave in sorted(opciones, key=int):
-      print(f' {clave}) {opciones[clave][0]}')
-
-#asigna la opcion ingresada a la variable a y si no esta en opciones vuelve a pedir
-def leer_opcion(opciones):
-  print('')
-  while (a := input('Opción: ')) not in opciones:
-      print('Opción incorrecta, vuelva a intentarlo.')
-  return a
-
-#Ejecuta la funcion asignada a la opcion ingresada
-def ejecutar_opcion(opcion, opciones):
-  opciones[opcion][1]()
-
-#Se genera el menu llamando a la funcion mostrar_menu y se asigna el resultado
-#de leer_opcion a la variable opcion
-def generar_menu(opciones, opcion_salida):
-  opcion = None 
-  while opcion != opcion_salida:
-      mostrar_menu(opciones)
-      opcion = leer_opcion(opciones)
-      ejecutar_opcion(opcion, opciones)
-      print()
-
+import funciones
 #Se definen las opciones del menu
 def menu_principal():
   print('')
-  print('Ejercicios De Variables')
+  print('Ejercicios De Diccionarios')
   print('')
   opciones = { 
-      '1': ('Mayor de edad?', accion1),
-      '2': ('Contraseña', accion2),
-      '3': ('divisor = 0', accion3),
-      '4': ('Par o Impar', accion4),
-      '5': ('Tributar', accion5),
-      '6': ('Agrupar por nombre', accion6),
-      '7': ('Renta Anual', accion7),
-      '8': ('Evaluación de empleados', accion8),
-      '9': ('Entrada por edad', accion9),
-      '10': ('Pizzería', accion10),
-      '11': ('Menu Anterior', accion11),
-      '12': ('Salir', salir)
+      '1': ('Consultar Moneda', accion1),
+      '2': ('Datos personales', accion2),
+      '3': ('Precio de frutas', accion3),
+      '4': ('Fechas', accion4),
+      '5': ('Menu Anterior', accion5),
+      '6': ('Salir', salir)
   }
-  generar_menu(opciones, '12')
+  funciones.generar_menu(opciones, '6')
 
 def accion1():
   from os import system
   system("clear")
+  print("")
+  print("----------------")
+  print("Consultar Moneda")
+  print("----------------")
+  print("")
+  print("Escribir un programa que guarde en una variable el diccionario {'Euro':'€',")
+  print("'Dollar':'$', 'Yen':'¥'}, pregunte al usuario por una divisa y muestre su")
+  print("bolo o un mensaje de aviso si la divisa no está en el diccionario.")
+  print("")
+  moneda = {
+    'Euro': "€",
+    'Dollar': '$',
+    'Yen': '¥',
+  }
+  ingresar_moneda = input("Ingresar moneda para su consulta: ")
 
-  print("EL CODIGO VA AQUI")
-
+  if ingresar_moneda.title() in moneda:
+      print(moneda[ingresar_moneda.title()])
+  else:
+      print("La divisa no está.")
   esperar_tecla()
   from os import system
   system("clear")
 
+def accion2():
+  from os import system
+  system("clear")
+  print("")
+  print("------------------")
+  print("|Datos personales|")
+  print("------------------")
+  print("")
+  print("Escribir un programa que pregunte al usuario su nombre, edad, dirección y teléfono y")
+  print("lo guarde en un diccionario. Después debe mostrar por pantalla el mensaje <nombre>")
+  print("tiene <edad> años, vive en <dirección> y su número de teléfono es")
+  print("<teléfono>.")
+  nombre = input("cual es su Nombre? ")
+  edad= input("Cual es su Edad? ")
+  direccion = input("Cual es su Direccion? ")
+  telefono = input("Cual es su Telefono? ")
+  persona = {
+    'nombre': nombre,
+    'edad': edad,
+    'direccion': direccion,
+    'telefono': telefono
+  }
+  print(persona['nombre'], 'tiene', persona['edad'], 'años, vive en', persona['direccion'], 'y su número de teléfono es', persona['telefono'])
+  esperar_tecla()
+  from os import system
+  system("clear")
+  
+
 def accion3():
   from os import system
   system("clear")
-
-  print("EL CODIGO VA AQUI")
-
+  print("")
+  print("------------------")
+  print("|Precio de frutas|")
+  print("------------------")
+  print("")
+  print("Escribir un programa que guarde en un diccionario los precios de las frutas de la tabla,")
+  print("pregunte al usuario por una fruta, un número de kilos y muestre por pantalla el precio")
+  print("de ese número de kilos de fruta. Si la fruta no está en el diccionario debe mostrar un")
+  print("mensaje informando de ello.")
+  print("")
+  print(" --------------------")
+  print(" |**Fruta**|*Precio*|")
+  print(" --------------------")
+  print(" | Plátano |  1.35  |")
+  print(" --------------------")
+  print(" | Manzana |  0.80  |")
+  print(" --------------------")
+  print(" |  Pera   |  0.85  |")
+  print(" --------------------")
+  print(" | Naranja |  0.70  |")
+  print(" --------------------")
+  print("")
+  fruta = {
+    'Platano': 1.35,
+    'Manzana': 0.80,
+    'Pera': 0.85,
+    'Naranja': 0.70
+  }
+  print("")
+  ingresar_fruta = input("Que fruta desea? ").title()
+  print("")
+  ingresar_peso = float(input("Que cantidad necesita? en KG "))
+  print("")
+  if ingresar_fruta in fruta:
+      print("Usted compro ",ingresar_peso,"KG de ",ingresar_fruta,"por ", fruta[ingresar_fruta] * ingresar_peso)
+  else:
+      print("La fruta no está.")
   esperar_tecla()
   from os import system
   system("clear")
@@ -86,73 +120,41 @@ def accion3():
 def accion4():
   from os import system
   system("clear")
-  
-  print("EL CODIGO VA AQUI")
-
+  print("")
+  print("--------")
+  print("|Fechas|")
+  print("--------")
+  print("")
+  print("Escribir un programa que pregunte una fecha en formato dd/mm/aaaa y muestre por")
+  print("pantalla la misma fecha en formato dd de <mes> de aaaa donde <mes> es el nombre")
+  print("del mes.")
+  print("")
+  entrada = input("Ingrese la fecha en formato dd/m/aaaa separados por /: ")
+  print("")
+  dia, mes, anho = entrada.split('/')# Dividir la entrada en las variables correspondientes
+  mes = int(mes.strip())
+  meses = {
+    1: 'enero',
+    2: 'febrero',
+    3: 'marzo',
+    4: 'abril',
+    5: 'mayo',
+    6: 'junio',
+    7: 'julio',
+    8: 'agosto',
+    9: 'agosto',
+    10: 'octubre',
+    11: 'Noviembre',
+    12: 'diciembre'
+  }
+  if mes in meses:
+      print(dia,"/",meses[mes],"/", anho)
+  print("")
   esperar_tecla()
   from os import system
   system("clear")
 
 def accion5():
-  from os import system
-  
-  print("EL CODIGO VA AQUI")
-
-  esperar_tecla()
-  from os import system
-  system("clear")
-
-def accion6():
-  from os import system
-  system("clear")
-  
-  print("EL CODIGO VA AQUI")
-
-  esperar_tecla()
-  from os import system
-  system("clear")
-
-def accion7():
-  from os import system
-  system("clear")
-  
-  print("EL CODIGO VA AQUI")
-
-  esperar_tecla()
-  from os import system
-  system("clear")
-
-def accion8():
-  from os import system
-  system("clear")
-  
-  print("EL CODIGO VA AQUI")
-
-  esperar_tecla()
-  from os import system
-  system("clear")
-
-def accion9():
-  from os import system
-  system("clear")
-  
-  print("EL CODIGO VA AQUI")
-
-  esperar_tecla()
-  from os import system
-  system("clear")
-
-def accion10():
-  from os import system
-  system("clear")
-  
-  print("EL CODIGO VA AQUI")
-  
-  esperar_tecla()
-  from os import system
-  system("clear")
-
-def accion11():
   esperar_tecla()
   from os import system
   system("clear")

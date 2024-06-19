@@ -2,46 +2,7 @@ import menu
 import sys
 import tty
 import termios
-
-
-#Pausar ejecucuion
-def esperar_tecla():
-  print('Presione cualquier tecla para continuar...')
-  fd = sys.stdin.fileno()
-  old_settings = termios.tcgetattr(fd)
-  try:
-      tty.setraw(sys.stdin.fileno())
-      sys.stdin.read(1)
-  finally:
-      termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-    
-#Imprimir menu opciones
-def mostrar_menu(opciones):
-  print('Seleccione una opción:')
-  for clave in sorted(opciones, key=int):
-      print(f' {clave}) {opciones[clave][0]}')
-
-#asigna la opcion ingresada a la variable a y si no esta en opciones vuelve a pedir
-def leer_opcion(opciones):
-  print('')
-  while (a := input('Opción: ')) not in opciones:
-      print('Opción incorrecta, vuelva a intentarlo.')
-  return a
-
-#Ejecuta la funcion asignada a la opcion ingresada
-def ejecutar_opcion(opcion, opciones):
-  opciones[opcion][1]()
-
-#Se genera el menu llamando a la funcion mostrar_menu y se asigna el resultado
-#de leer_opcion a la variable opcion
-def generar_menu(opciones, opcion_salida):
-  opcion = None 
-  while opcion != opcion_salida:
-      mostrar_menu(opciones)
-      opcion = leer_opcion(opciones)
-      ejecutar_opcion(opcion, opciones)
-      print()
-
+import funciones
 #Se definen las opciones del menu
 def menu_principal():
   print('')
@@ -57,7 +18,7 @@ def menu_principal():
       '7': ('Menu Anterior', accion7),
       '8': ('Salir', salir)
   }
-  generar_menu(opciones, '8')
+  funciones.generar_menu(opciones, '8')
 
 def accion1():
   from os import system

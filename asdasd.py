@@ -1,7 +1,13 @@
-frutas = {'Plátano':1.35, 'Manzana':0.8, 'Pera':0.85, 'Naranja':0.7}
-ingresar_fruta = input('¿Qué fruta quieres? ').title()
-kg = float(input('¿Cuántos kilos? '))
-if ingresar_fruta in frutas:
-    print(kg, 'kilos de', ingresar_fruta, 'valen', frutas[ingresar_fruta]*kg, '€')
-else: 
-    print("Lo siento, la fruta", ingresar_fruta, "no está disponible.")
+# Solicitar al usuario que ingrese sus datos en una sola línea
+entrada = input("Ingrese su nombre, edad y ciudad separados por /: ")
+
+# Dividir la entrada en las variables correspondientes
+nombre, edad, ciudad = entrada.split('/')
+
+# Convertir la edad a un entero
+edad = int(edad.strip())
+
+# Mostrar los datos ingresados
+print(f"Nombre: {nombre.strip()}")
+print(f"Edad: {edad}")
+print(f"Ciudad: {ciudad.strip()}")
