@@ -1,5 +1,8 @@
-Ejercicios de python<br>
-Para ejecutar en windows<br>
+Python exercises<br>
+To run on Windows<br>
   ...<br>
-Para ejecutar en Linux<br>
-  /usr/bin/python3 /home/usuario/Documents/menu.py
+To run on Linux<br>
+  /usr/bin/python3 /home/usuario/Documents/menu.py<br><br>
+More exercises will be added
+
+  
